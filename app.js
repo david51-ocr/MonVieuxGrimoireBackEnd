@@ -7,6 +7,7 @@ const mongoose = require ('mongoose');
 
 const Book=require('./Models/book');
 const bookRoutes = require('./Routes/book');
+const userRoutes = require ('./Routes/user');
 const { config } = require('dotenv');
 
 
@@ -20,5 +21,6 @@ app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
   next();
 });
-app.use('api/book', bookRoutes);
+app.use('/api/book', bookRoutes);
+app.use ('/api/auth', userRoutes);
 module.exports = app;
