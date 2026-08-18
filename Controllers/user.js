@@ -1,11 +1,11 @@
-const bcryp = require ('bcrypt');
-const jsonwebtoken =('jsonwebtoken');
+const bcrypt = require ('bcrypt');
+const jsonwebtoken = require ('jsonwebtoken');
 const User = require ('../Models/users');
 
 exports.signup = (req, res, next) => {
 bcrypt.hash(req.body.password,10)
 .then(hash => {
-    const user =newUser({
+    const user =new User({
         email : req.body.email,
         password : hash
     });
@@ -34,7 +34,7 @@ exports.login = (req, res, next) => {
 
           res.status(200).json({
             userId: user._id,
-            token: jwt.sign(
+            token: jsonwebtoken.sign(
                            { userId: user._id },
                            'RANDOM_TOKEN_SECRET',
                            { expiresIn: '24h' }

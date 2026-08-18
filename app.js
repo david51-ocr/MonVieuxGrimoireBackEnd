@@ -21,6 +21,6 @@ app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
   next();
 });
-app.use('/api/book', bookRoutes);
+app.use('/api/books', bookRoutes);
 app.use ('/api/auth', userRoutes);
 module.exports = app;
