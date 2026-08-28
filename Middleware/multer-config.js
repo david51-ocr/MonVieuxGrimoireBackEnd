@@ -18,4 +18,9 @@ console.log(file.mimetype);
         callback (null, name +Date.now() + '.' +extension);
     }
 });
-module.exports = multer ({storage: storage}).single('image');
+module.exports = multer({
+  storage: storage,
+  limits: {
+    fileSize: 8 * 1024 * 1024
+  }
+}).single('image');
