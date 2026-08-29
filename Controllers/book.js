@@ -6,7 +6,7 @@ exports.createBook= (req, res) => {
 
 const bookObject = JSON.parse (req.body.book);
 delete bookObject._id;
-delete bookObject._userId;
+delete bookObject.userId;
 
 const book = new Book ({
   ...bookObject,
